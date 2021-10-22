@@ -32,11 +32,20 @@ int main(void)
     //printf("File summ %d\n", get_file_numbers_summ("in.txt"));
     //fileops task 3
     //file_append_digits_amount("in.txt");
+
     struct measurements meas[100];
     int count = read_measurements_from_file(meas, "measurements.txt");
     if (count != -1) {
         print_measurements(meas, count);
     }
+
+    save_binary_file(meas, 100* sizeof(struct measurements), "structs.bin");
+
+    memset(meas, 0, 100* sizeof(struct measurements));
+    print_measurements(meas, 10);
+
+    load_binary_file(meas, 100* sizeof(struct measurements), "structs.bin");
+    print_measurements(meas, 10);
 
     return 0;
 }

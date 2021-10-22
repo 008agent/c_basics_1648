@@ -14,4 +14,8 @@ int get_file_numbers_summ(const char *filename);
 
 void file_append_digits_amount(const char *filename);
 
+
+void save_binary_file(const void *ptr, int bytescount, const char *filename);
+void load_binary_file(void *ptr, int bytescount, const char *filename);
+
 #endif

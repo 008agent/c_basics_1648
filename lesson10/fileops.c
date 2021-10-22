@@ -60,3 +60,48 @@ void file_append_digits_amount(const char *filename)
 
     fclose(f);
 }
+
+/*
+
+       size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);
+
+       size_t fwrite(const void *ptr, size_t size, size_t nmemb,
+                     FILE *stream);
+
+*/
+
+
+void save_binary_file(const void *ptr, int bytescount, const char *filename)
+{
+    FILE *f;
+    // b - binary
+    f = fopen(filename, "wb");
+    if (!f) {
+        printf("Error save_binary_file\n");
+        return;
+    }
+
+    size_t wr = fwrite(ptr, 1, bytescount, f);
+
+    printf("write %lu bytes\n", wr);
+
+    fclose(f);
+}
+
+
+void load_binary_file(void *ptr, int bytescount, const char *filename)
+{
+    FILE *f;
+    // b - binary
+    f = fopen(filename, "rb");
+    if (!f) {
+        printf("Error load_binary_file\n");
+        return;
+    }
+
+    size_t rd = fread(ptr, 1, bytescount, f);
+
+    printf("read %lu bytes\n", rd);
+
+    fclose(f);
+}

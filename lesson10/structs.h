@@ -40,6 +40,28 @@ struct measurements {
     int temp;
 };
 
+struct bitset {
+    char bit0:1;
+    char bit1:1;
+    char bit2:1;
+    char bit3:1;
+    char bit4:1;
+    char bit5:1;
+    char bit6:1;
+    char bit7:1;
+};
+
+union num {
+    float f;
+    int i;
+};
+
+union u_test {
+    unsigned int as_u32;
+    unsigned char as_u8[4];
+    struct bitset b;
+};
+
 int read_measurements_from_file(struct measurements *meas, const char *file);
 void print_measurements(struct measurements *meas, int N);
 
